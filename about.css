@@ -1,4 +1,3 @@
-
 @import url("./Satoshi_Complete/Fonts/WEB/css/satoshi.css");
 
 
@@ -10,12 +9,13 @@
     box-sizing: border-box;
 }
 
+
 body{
-    font-family: "Satoshi_Complete",sans-serif;
+    font-family: "Satoshi_Complete" ,sans-serif;
 }
 
 .side-gap{
-    width: 88%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -35,6 +35,8 @@ body{
     --gray-dark:#51525C;
     --red:red;
     --green:green;
+    --hover-bg-color:rgb(77, 252, 185);
+    --hover-color:white;
     /* color property end */
     /* size property  start*/
     --large-size:6.5rem;
@@ -63,10 +65,11 @@ a{
 
 /* start css of header */
 header{
+    z-index: 4;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     height: 5.18rem;
-    align-items: center;
 }
 
 .logo-name{
@@ -74,10 +77,9 @@ header{
     align-items: center;
     gap: 1%;
     font-size: var(--x-small3);
-    font-weight: 700;
+    font-weight: var(--font-weight2);
     color: var(--black);
 }
-
 
 .logo-name p{
     padding-left: 0.5rem;
@@ -87,23 +89,76 @@ header{
 header nav{
     display: flex;
     gap: 2rem;
-    font-weight: var(--font-weight1);
 }
 
 header nav a{
     text-decoration: none;
-    font-size: 10px;
-    color: var(--gray);
+    font-size: 1rem;
+    color: var(--gray-dark);
+    font-weight:100;
+    position: relative;
+    transition: color 0.8s ease ;
+}
+
+/* start hover and animation */
+
+header nav a:hover span{
+    color: var(--hover-bg-color);
+}
+
+
+.rotate{
+    animation: rotate 2s linear  infinite;
+}
+
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+nav a::after{
+    content:'';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--green);
+    transition: width  0.3s ease-out;
+}
+
+nav a:hover::after{
+    width: 100%;
 }
 
 .contact-btn button{
-    background-color: var(--black2);
+    background-color: var(--black);
     color: var(--white);
     border: none;
     padding: 0.625rem 1.125rem;
     border-radius: 0.375rem;
+    transition: background-color 0.3s ease , color 0.3s ease ;
 }
+
+.contact-btn button:hover{
+    background-color: var(--hover-bg-color);
+    color: var(--white);
+}
+
+
+ .three-dot{
+    display: none;
+}
+
+/* end hover and animation */
 /* end css of header */
+
+
 
 /* start of hero part */
 .hero-part{
@@ -127,10 +182,53 @@ header nav a{
     color: var(--gray);
 }
 
+.hero-img{
+    width: 100%;
+    border-radius: 1rem;
+    display:flex;
+    overflow: hidden;
+}
+
 .hero-img img{
     width: 100%;
 }
 
+
+/* start animation part of hero section */
+
+.list-text h2{
+    position: relative;
+    animation: move-left 1s ease-in-out forwards ;
+ }
+ 
+ @keyframes move-left{
+    from{
+         left:-430px;
+     }
+     to{
+         left: 0px;
+     }
+ }
+
+
+
+
+ .list-text p{
+    position: relative;
+    animation: move-right 1s  ease-in-out forwards ;
+ }
+
+ @keyframes move-right{
+    from{
+         right:-500px;
+     }
+     to{
+         right: 0px;
+     }
+ }
+
+
+/* end animation part of hero section */
 /* end of hero part */
 
 /*start of statistic part */
@@ -159,6 +257,9 @@ header nav a{
 }
 /*end of statistic part */
 
+
+
+/* details part and faq part both are same */
 /* start of details part */
 
 .faq-part{
@@ -172,23 +273,29 @@ header nav a{
     font-size: var(--medium2);
     font-weight: var(--font-weight1);
 }
+
 .faq-texts{
-    width: 50%;
+    width: 55%;
 }
 
 .faq-part p{
     line-height: 2;
-    margin-top: 1.8rem;
+    margin-top: 1rem;
     color: var(--gray-dark);
     font-weight: var(--font-weight1);
 }
 
 .faq-img{
-    width: 50%;
+    width: 45%;
+    border-radius: 1rem;
+    overflow: hidden;
 }
+
+
 
 .faq-img img{
     width: 100%;
+    height: 100%;
 }
 /* end of details part */
 
@@ -210,6 +317,21 @@ header nav a{
     display: flex;
     justify-content: space-between;
     color: var(--gray-dark);
+    gap: 1%;
+    overflow: hidden;
+    flex-wrap: wrap;
+}
+
+
+
+.all-bank .bank1{
+    width: 15%;
+    display: flex;
+}
+
+.all-bank img{
+    width: 100%;
+    height: 100%;
 }
 
 .all-bank h3{
@@ -221,23 +343,22 @@ header nav a{
 .all-bank p{
     font-size:1rem;
 }
-/* end of band part */
 
-/* start of testimonial part */
-.testimonial-texts{
+
+.bank-texts{
     padding-top: 6rem;
     margin-bottom: 4rem;
     display: flex;
     justify-content: space-between;
 }
 
-.testimonial-texts h3{
+.bank-texts h3{
     font-size: var(--medium2);
     font-weight: var(--font-weight1);
 }
 
 
-.testimonial-texts P{
+.bank-texts P{
     color: var(--gray-dark);
     width: 40%;
     line-height: 1.5;
@@ -248,26 +369,33 @@ header nav a{
     border: 1px solid var(--white2);
 }
 
+/* end of bank part */
+
+/* start of testimonial part */
+
+
+
 .texts-image{
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .texts-image .left-text{
-    width: 55%;
+    width: 50%;
+    height: 100%;
 }
 
 .texts-image .left-text svg{
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .texts-image .line-div{
     display: flex;
     align-items: center;
     gap: 0.5%;
-    margin-top: 2rem;
-    margin-bottom: 4rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .line-div span{
@@ -279,6 +407,7 @@ header nav a{
     font-weight: var(--font-weight1);
     font-size: var(--medium2);
 }
+
 .left-text p{
     font-size: var(--x-small2);
     margin-top:1rem ;
@@ -287,8 +416,8 @@ header nav a{
 }
 
 .texts-image .line{
-   width: 1rem;
-   height: 0.1rem;
+   width: 2rem;
+   height: 0.2rem;
    background-color: var(--black);
 }
 
@@ -299,13 +428,13 @@ header nav a{
 }
 
 .three-line .black{
-    width: 3.5rem;
+    width: 5rem;
     height: 0.5rem;
     border-radius:1rem;
     background-color: var(--black);
 }
 .three-line .white{
-    width: 3.5rem;
+    width: 5rem;
     height: 0.5rem;
     border-radius:1rem;
     border: 1px solid var(--white4);
@@ -314,45 +443,67 @@ header nav a{
 
 .testimonial-img{
     width: 40%;
+    overflow: hidden;
+    display: flex;
+    border-radius: 1rem;
+    border-radius: 1rem;
+
 }
 
 .testimonial-img img{
     width: 100%;
+    height: 100%;
 }
 /* end of testimonial part */
 
 
+
+/* details part and faq part both are same */
 /* start of faq part */
-.faq-part{
+.faq-section  .faq-part{
     display: flex;
     justify-content: space-between;
     gap: 4.47%;
 }
 
-.img-text{
+  .faq-section  .img-text{
     width: 41.56%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.img-text img{
-    width: 100%;
-}
 
-.img-text h2{
+
+
+.faq-section   .img-text h2{
     font-size: var(--medium1);
     font-weight: var(--font-weight1);
 }
 
-.img-text p{
-    margin-top: 3.5rem;
-    margin-bottom:3.5rem ;
+.faq-section   .img-text p{
     line-height: 1.5;
 }
 
-.only-texts{
+
+ .faq-section  .img-text .left-img{
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+}
+
+.faq-section   .left-img img{
+    width: 100%;
+    height: 100%;
+    height: fit-content;
+}
+
+ .faq-section   .only-texts{
     width: 56.06%;
 }
 
-.only-texts h5{
+.faq-section   .only-texts h5{
     font-size: var(--x-small3);
     display: flex;
     justify-content: space-between;
@@ -360,12 +511,12 @@ header nav a{
     font-weight: var(--font-weight1);
 }
 
-.only-texts i{
+.faq-section    .only-texts i{
     font-size: 1rem;
     color: var(--gray4);
 }
 
-.only-texts p{
+.faq-section    .only-texts p{
    margin-bottom: 3.1rem;
    display: flex;
    justify-content: space-between;
@@ -378,9 +529,10 @@ header nav a{
 /* start of footer part */
 
 footer{
-    background-color: var(--black2);
+    background-color: var(--black);
     color: var(--white);
     padding-top: 5rem;
+    margin-top: 3rem;
 }
 
 .footer-body{
@@ -399,7 +551,17 @@ footer{
 }
 
 .left-info{
-    width: 46.68%;
+    width: 60%;
+}
+
+.phone-general{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+
+.office{
+    width: 50%;
 }
 
 .left-info h3{
@@ -414,31 +576,44 @@ footer{
 }
 
 .right-info{
-    width: 24%;
+    display: flex;
+    justify-content: space-between;
+    width:35%;
     gap: 3%;
 }
 
 
 .navigation{
+    width: 60%;
+}
+
+
+.all-nav{
     display: flex;
     justify-content: space-between;
 }
 
-.all-links{
-    display: flex;
-    justify-content: space-between;
-}
-
-.right-info a{
+.all-nav .nav1{
     margin-top: 1rem;
-    margin-bottom: 1rem;
-    color: var(--white1);
 }
 
-.all-links .flink{
+.social-link{
+    width: 45%;
     display: flex;
     flex-direction: column;
 }
+
+
+.right-info a{
+    color: var(--white1);
+}
+
+.social-link .slink{
+    margin-top: 1rem;
+    color: var(--white);
+}
+
+
 
 .footer-text{
     display: flex;
@@ -448,7 +623,8 @@ footer{
     padding-bottom: 2.5rem;
 }
 
-.footer-text p{
+
+footer .logo-name{
     color: var(--white);
 }
 
@@ -457,5 +633,355 @@ footer .back-arrow svg {
     margin-left: 0.5rem;
 }
 
+.right-info a{
+    transition: color 0.3s ease;
+}
+footer .right-info a:hover{
+    color: var(--hover-bg-color);
+}
+
+
+.footer-text .back-arrow a{
+    color: var(--white);
+}
+
+.footer-text .back-arrow a:hover{
+   color: var(--hover-bg-color);
+}
 
 /* end of footer part */
+
+
+
+
+
+
+
+    /* start css for Medium devices (tablets) */
+    @media only screen and (min-width: 767.99px) and (max-width: 991.98px){
+
+
+
+        .side-gap{
+            width: 90%;
+        }
+
+       /* header start */
+       header nav {
+        gap: 1rem;
+        }
+
+        .hero-text h1 {
+            font-size:var(--medium2);
+        }
+        /* header end */
+
+        /* start of hero part */
+
+        .list-text h2 {
+            font-size: var(--small);
+        }
+        /* end of hero part */
+
+
+        /* start details part  */
+
+        .faq-part {
+            flex-direction: column;
+        }
+
+        .faq-texts {
+            width: 100%;
+        }
+
+         .details .faq-texts h2 {
+            font-size: var(--small);
+        }
+
+
+        .faq-img {
+            width: 100%;
+            margin-top: 2rem;
+        }
+        /* end details part  */
+
+        /* start of bank part */
+
+        .bank-texts h3 {
+            font-size: var(--small);
+        }
+        /* end of bank part */
+
+        /* start of testimonial part */
+
+        .left-text h3 {
+            font-size: var(--small);
+        }
+        /* end of testimonial part */
+
+        /* start of faq part */
+
+        .faq-section .img-text {
+            width:100%;
+        }
+
+        .faq-section img{
+            display: none;
+        }
+
+
+        .faq-section .only-texts {
+            width: 100%;
+        }
+        /* end of faq part */
+
+
+
+
+        /* footer part start */
+        .address{
+            flex-direction: column;
+        }
+
+        .address .office{
+            width: 100%;
+        }
+
+
+        .social-link {
+            display: block;
+        }
+        /* footer part end */
+
+    }     
+    /* end css for Medium devices (tablets) */
+
+
+    /*  start css for mobail */
+    @media only screen and (min-width: 0px) and (max-width: 575.98px){
+
+
+        .side-gap{
+        width: 92%;
+        margin: 0 auto;
+        }   
+    
+    
+        /* start of header */
+    
+        header nav{
+            display: none;
+        }
+        header button{
+            display: none;
+        }
+    
+        header .three-dot{
+            display: block;
+        }
+        /* end of header */
+
+        /* start of hero part */
+        .list-text {
+            flex-direction: column;
+        }
+
+        .list-text h2 {
+            font-size: var(--x-small2);
+        }
+
+        .list-text p {
+            padding-top: 1rem;
+            width: 100%;
+        }
+        /* end of hero part */
+
+        /* start of statistic  part */
+
+        .statistic-body {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* end of statistic  part */
+
+        /* start of details part  */
+
+        .faq-part {
+            flex-direction: column;
+        }
+
+        .faq-texts h2 {
+            font-size: var(--small);
+        }
+
+        .faq-texts {
+            width: 100%;
+        }
+
+        .faq-img {
+            margin-top: 2rem;
+            width: 100%;
+        }
+        /* end of details part  */
+
+
+        /* start of bank part */
+
+
+        .bank-texts {
+            padding-top: 3rem;
+            margin-bottom: 3rem;
+            flex-direction: column;
+        }
+
+        .bank-texts h3 {
+            font-size: var(--small);
+        }
+
+        .bank-texts P {
+            width: 100%;
+        }
+
+        .all-bank .bank1 {
+            width: 45%;
+            padding-top: 2rem;
+        }
+
+        /* end of bank part */
+
+        /* start  testimonial part */
+
+        .texts-image {
+            flex-direction: column;
+        }
+
+        .texts-image .left-text {
+            width: 100%;
+        }
+
+        .left-text h3 {
+            font-size: var(--small);
+        }
+
+        .left-text p {
+            font-size: var(--x-small3);
+        }
+
+        .testimonial-img {
+            width: 100%;
+            margin-top: 2rem;
+        }
+        
+        /* end  testimonial part */
+
+        /*start faq part  */
+
+        .faq-section .img-text h2 {
+            font-size: var(--small);
+        }
+
+        .faq-section .img-text {
+            width: 100%;
+        }
+
+        .faq-section .img-text .left-img {
+            display: none;
+        }
+
+        .faq-section .only-texts {
+            width: 100%;
+        }
+        /*end faq part  */
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+        /* start of footer */
+
+        .address{
+            flex-direction: column;
+        }
+            
+        .phone-general{
+            width: 100%;
+            justify-content: start;
+            gap: 8%;
+        }
+
+
+        .office{
+            width: 100%;
+        }
+
+        .information {
+            flex-direction: column;
+        }
+
+
+        .left-info {
+            width: 100%;
+        }
+
+        .left-info h3 {
+            width: 100%;
+        }
+
+
+        .right-info{
+            width: 100%;
+            flex-direction: column;
+        }
+
+        .navigation{
+            width: 100%;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .all-nav{
+            justify-content: start;
+            gap: 8%;
+        }
+
+        .social-link {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            gap: 5%;
+            flex-wrap:wrap;
+        }
+
+        .slink{
+            display: inline-block;
+            color: var(--white);
+        }
+
+
+
+        .footer-text {
+            flex-direction: column;
+        }
+
+        .copyright{
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        /* end of footer */
+
+
+    }     
+    /*  end css for mobail */
